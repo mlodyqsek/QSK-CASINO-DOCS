@@ -35,6 +35,8 @@ QSK Casino is a comprehensive casino tablet system for FiveM servers, featuring 
 - Anti-cheat measures for client-side games
 - Admin permission controls for chip management
 - SQL injection protection through prepared statements
+- License validation with feature gating (no remote kill-switches)
+- Compliant with FiveM release rules (no obfuscation or hidden telemetry)
 
 ### Management Tools
 - Comprehensive database logging (optional)
@@ -80,6 +82,20 @@ QSK Casino is a comprehensive casino tablet system for FiveM servers, featuring 
 ## Configuration
 
 The script is highly customizable through `config.lua`. Below are detailed explanations of each configuration option:
+
+### License Configuration
+```lua
+Config.LicenseKey = "your-license-key-here"  -- Your license key from the developer
+Config.ScriptName = "CASINo"                -- Must match the script name in license system
+Config.LicenseAPI = "http://your-api-endpoint"  -- License validation API endpoint
+Config.LicenseActive = false                -- Automatically set based on validation
+Config.EnableTelemetry = false              -- Enable/disable telemetry (disabled for compliance)
+```
+- **LicenseKey**: Your unique license key provided by the developer
+- **ScriptName**: Internal script identifier (do not change)
+- **LicenseAPI**: The API endpoint for license validation (plain URL, no obfuscation)
+- **LicenseActive**: Automatically managed; controls feature access
+- **EnableTelemetry**: Telemetry is disabled by default for privacy and compliance
 
 ### Framework Settings
 ```lua
@@ -272,7 +288,7 @@ Automatic cleanup procedures remove old logs based on retention settings.
 
 ## Support
 
-For support, please refer to the original documentation or contact the developer. Do not attempt to reverse-engineer encrypted code.
+For support, please refer to the original documentation or contact the developer. The license system uses plain API endpoints for validation and does not include obfuscation or remote kill-switches for compliance with FiveM rules.
 
 ## License
 
