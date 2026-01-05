@@ -41,4 +41,5 @@ https://discord.gg/bGYkVDYgwH
 ---
 
 **Last Updated**: January 2026
-**Author**: QSK Server</content>
+**Author**: QSEK</content>
+
