@@ -12,14 +12,12 @@ QSK Casino is a comprehensive casino tablet system for FiveM servers, featuring 
 ## Features
 
 ### Games Included
-- **Crash**: Multiplayer crash game with real-time betting
 - **Dice**: Target-based dice rolling with customizable odds
 - **Coin Flip**: Simple heads/tails betting
 - **Plinko**: Pinball-style dropping game with multiple board sizes
 - **Mines**: Minesweeper-style game with variable mine counts
 - **Gem Rush**: Slot machine with gem symbols
 - **Pirate Rush**: Pirate-themed slot machine
-- **Fruit Party**: Fruit-themed slot machine
 - **HiLo**: Higher/Lower card prediction game
 - **Blackjack**: Classic blackjack with dealer AI
 - **Keno**: Number selection lottery game
@@ -83,27 +81,19 @@ QSK Casino is a comprehensive casino tablet system for FiveM servers, featuring 
 
 The script is highly customizable through `config.lua`. Below are detailed explanations of each configuration option:
 
-### License Configuration
-```lua
-Config.LicenseKey = "your-license-key-here"  -- Your license key from the developer
-Config.ScriptName = "CASINo"                -- Must match the script name in license system
-Config.LicenseAPI = "http://your-api-endpoint"  -- License validation API endpoint
-Config.LicenseActive = false                -- Automatically set based on validation
-Config.EnableTelemetry = false              -- Enable/disable telemetry (disabled for compliance)
-```
-- **LicenseKey**: Your unique license key provided by the developer
-- **ScriptName**: Internal script identifier (do not change)
-- **LicenseAPI**: The API endpoint for license validation (plain URL, no obfuscation)
-- **LicenseActive**: Automatically managed; controls feature access
-- **EnableTelemetry**: Telemetry is disabled by default for privacy and compliance
-
 ### Framework Settings
 ```lua
 Config.Framework = 'qbcore' -- Options: 'qbcore', 'esx', 'standalone'
 Config.QBCoreExport = 'qb-core-main' -- Only needed for QBCore, match your qb-core resource name
+Config.QBCoreVersion = 'new' -- 'old' or 'new'
+Config.ESXVersion = 'legacy' -- 'legacy' or 'new'
+Config.Language = "en" -- Default language for UI translations
 ```
 - **Framework**: Choose your server's framework. 'standalone' runs without any dependencies
 - **QBCoreExport**: The exact name of your qb-core resource folder
+- **QBCoreVersion**: Specify 'old' or 'new' for QBCore version compatibility
+- **ESXVersion**: Specify 'legacy' or 'new' for ESX version compatibility
+- **Language**: Default language code (check translations.json for supported languages)
 
 ### Database Settings
 ```lua
@@ -217,6 +207,32 @@ Config.Promotions = {
 - Enable/disable the entire promotion system
 - Challenges reset every X days
 - Fully customizable challenges with conditions and rewards
+
+### Promo Codes System
+```lua
+Config.PromoCodes = {
+    Enabled = true,
+    Codes = {
+        {
+            code = 'START10',
+            type = 'percentage', -- 'percentage' or 'fixed'
+            value = 10, -- 10% or $10
+            maxUses = 1, -- per player
+            description = '10% bonus on first deposit'
+        },
+        {
+            code = 'BONUS50',
+            type = 'fixed',
+            value = 50,
+            maxUses = 1,
+            description = '$50 bonus on deposit'
+        }
+    }
+}
+```
+- Enable/disable the promo codes system
+- Define promotional codes with percentage or fixed bonuses
+- Set maximum uses per player and descriptions
 
 ### Notifications
 ```lua
